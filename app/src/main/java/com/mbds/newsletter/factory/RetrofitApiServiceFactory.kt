@@ -1,5 +1,6 @@
-package com.mbds.newsletter.data
+package com.mbds.newsletter.factory
 
+import com.mbds.newsletter.data.RetrofitApiService
 import com.mbds.newsletter.model.Article
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -8,15 +9,19 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ArticleOnlineService : ArticleService {
-
+class RetrofitApiServiceFactory {
     private val service: RetrofitApiService
 
     init {
         val retrofit = buildClient()
         //Init the api service with retrofit
         service = retrofit.create(RetrofitApiService::class.java)
+
     }
+    fun getInstance() : RetrofitApiService {
+        return service
+    }
+
     /**
      * Configure retrofit
      */
@@ -64,12 +69,10 @@ class ArticleOnlineService : ArticleService {
         })
     }
 
-    override fun getArticles(): List<Article> {
-        return service.list().execute().body() ?: listOf()
-    }
 
     companion object {
         private const val apiKey = "d919a51ac9404a64ab2a81d7674219a1"
         private const val apiUrl = "https://newsapi.org/v2/"
+        val instance : RetrofitApiService = RetrofitApiServiceFactory().getInstance()
     }
 }

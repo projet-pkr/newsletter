@@ -1,18 +1,23 @@
 package com.mbds.newsletter.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.mbds.newsletter.MainActivity
 import com.mbds.newsletter.R
 import com.mbds.newsletter.adapters.ArticleAdapter
-import com.mbds.newsletter.data.article.ArticleOnlineService
+import com.mbds.newsletter.adapters.SourceAdapter
+import com.mbds.newsletter.changeFragment
+import com.mbds.newsletter.data.source.SourceService
+import com.mbds.newsletter.data.source.SourceServiceImpl
 import com.mbds.newsletter.model.Article
+import com.mbds.newsletter.model.Source
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -20,68 +25,73 @@ import kotlinx.coroutines.withContext
 
 /**
  * A simple [Fragment] subclass.
- * Use the [ArticlesFragment.newInstance] factory method to
+ * Use the [SourcesFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ArticlesFragment : Fragment() {
+class SourcesFragment : Fragment() {
 
-    lateinit var  articleOnlineService : ArticleOnlineService
-    lateinit var sourceId: String
+    private  lateinit var sourceService : SourceServiceImpl
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_articles, container, false)
+        return inflater.inflate(R.layout.fragment_sources, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //get data
         lifecycleScope.launch{
             getData(view)
         }
-    }
 
+    }
     private suspend fun getData(view: View){
         withContext(Dispatchers.IO){
             //val result = repository.list()
-            val result = articleOnlineService.getArticlesBySourceId(sourceId)
+            val result = sourceService.getSources()
             bindData(result, view)
         }
     }
-    private suspend fun bindData(result : List<Article>?, view: View){
+    private suspend fun bindData(result : List<Source>?, view: View){
         withContext(Dispatchers.Main){
             //display data in the recycler
             /* val textView = view?.findViewById<TextView>(R.id.text1)
                textView?.text = result?.get(0)?.description*/
-            val recyclerView: RecyclerView = view.findViewById(R.id.article_recycler_view)
-            val listOfArticles = result ?: emptyList()
-            val adapterRecycler = ArticleAdapter(listOfArticles.toMutableList())
+            val recyclerView: RecyclerView = view.findViewById(R.id.source_recycler_view)
+            val listOfSources = result ?: emptyList()
+            val sourceAdapter = SourceAdapter(listOfSources.toMutableList()){
+                itemClicked(it)
+            }
             val gridLayoutManager = GridLayoutManager(view.context, 1)
             recyclerView.layoutManager = gridLayoutManager
-            recyclerView.adapter = adapterRecycler
+            recyclerView.adapter = sourceAdapter
 
 
         }
     }
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment ArticlesFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(sourceId : String) =
-            ArticlesFragment().apply {
-                this.sourceId = sourceId
-                this.articleOnlineService = ArticleOnlineService()
-            }
+
+    private fun itemClicked(source : Source){
+        Toast.makeText(
+            context,
+            source.id,
+            Toast.LENGTH_LONG
+        ).show()
+        (activity as? MainActivity)?.changeFragment(
+            ArticlesFragment.newInstance(
+                source.id
+            )
+        )
     }
 
+
+
+    companion object {
+        @JvmStatic
+        fun newInstance() =
+            SourcesFragment().apply {
+                this.sourceService = SourceServiceImpl()
+            }
+    }
 }

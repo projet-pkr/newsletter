@@ -38,7 +38,6 @@ class CategoriesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentCategoriesBinding.inflate(inflater,container,false)
-        //return inflater.inflate(R.layout.fragment_categories, container, false)
         return binding.root
     }
 
@@ -46,9 +45,9 @@ class CategoriesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val recyclerView : RecyclerView = view.findViewById(R.id.recycler_view)
         val categories : List<Category> = listOf(
-            Category("Editeur","https://picsum.photos/seed/picsum/500/300"),
-            Category("Categories","https://picsum.photos/seed/picsum/500/300"),
-            Category("Pays","https://picsum.photos/seed/picsum/500/300")
+            Category("source","Editeur","https://picsum.photos/seed/picsum/500/300"),
+            Category("category","Categories","https://picsum.photos/seed/picsum/500/300"),
+            Category("country","Pays","https://picsum.photos/seed/picsum/500/300")
         )
         val categoryAdapter = CategoryAdapter(categories){
             itemClicked(it)
@@ -64,10 +63,17 @@ class CategoriesFragment : Fragment() {
             category.name,
             Toast.LENGTH_LONG
         ).show()
-        /*(activity as? MainActivity)?.changeFragment(
+        val fragment = when(category.type){
+            "source" -> SourcesFragment.newInstance()
+            "category" -> SourcesFragment.newInstance()//CategoriesElementFragment()
+            else -> {
+                SourcesFragment.newInstance()//CountryFragment()
+            }
+        }
+        (activity as? MainActivity)?.changeFragment(
             //sub-categories like editor
-
-        )*/
+               fragment
+        )
 
     }
 

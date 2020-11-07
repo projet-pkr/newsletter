@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mbds.newsletter.R
 import com.mbds.newsletter.model.Article
-import java.lang.Long
 
 class ArticleAdapter ( val dataset: MutableList<Article>) : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
 

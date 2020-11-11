@@ -27,6 +27,10 @@ class ArticlesFragment : Fragment() {
 
     lateinit var  articleOnlineService : ArticleOnlineService
     lateinit var sourceId: String
+    lateinit var countryId : String
+    lateinit var category : String
+    lateinit var type : String
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,7 +51,15 @@ class ArticlesFragment : Fragment() {
     private suspend fun getData(view: View){
         withContext(Dispatchers.IO){
             //val result = repository.list()
-            val result = articleOnlineService.getArticlesBySourceId(sourceId)
+            val result = when(type){
+                "1" -> articleOnlineService.getArticlesBySourceId(sourceId)
+                "2" -> articleOnlineService.getArticlesByCategory(category)
+                "3" -> articleOnlineService.getArticlesByCountry(countryId)
+                else -> {
+                   listOf<Article>()
+                }
+            }
+
             bindData(result, view)
         }
     }
@@ -77,10 +89,15 @@ class ArticlesFragment : Fragment() {
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
-        fun newInstance(sourceId : String) =
+        fun newInstance(sourceId : String = "", category: String = "", countryId  : String = "") =
             ArticlesFragment().apply {
                 this.sourceId = sourceId
+                this.category = category
+                this.countryId = countryId
                 this.articleOnlineService = ArticleOnlineService()
+                this.type = mapOf(1 to sourceId, 2 to category, 3 to countryId).filter {
+                    it.value.isNotEmpty()
+                }.keys.first().toString()
             }
     }
 

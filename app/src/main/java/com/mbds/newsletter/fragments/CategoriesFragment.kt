@@ -65,9 +65,9 @@ class CategoriesFragment : Fragment() {
         ).show()
         val fragment = when(category.type){
             "source" -> SourcesFragment.newInstance()
-            "category" -> SourcesFragment.newInstance()//CategoriesElementFragment()
+            "category" -> SubCategoriesFragment.newInstance()//CategoriesElementFragment()
             else -> {
-                SourcesFragment.newInstance()//CountryFragment()
+                CountriesFragment.newInstance()//CountryFragment()
             }
         }
         (activity as? MainActivity)?.changeFragment(

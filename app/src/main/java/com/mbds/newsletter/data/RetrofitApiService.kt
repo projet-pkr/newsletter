@@ -1,6 +1,7 @@
 package com.mbds.newsletter.data
 
 import com.mbds.newsletter.model.ArticleResponse
+import com.mbds.newsletter.model.CountryResponse
 import com.mbds.newsletter.model.SourceResponse
 import retrofit2.Call
 import retrofit2.http.GET
@@ -16,4 +17,13 @@ interface RetrofitApiService {
 
     @GET("everything")
     fun getArticleBySourcesId(@Query("sources") sourceId: String) : Call<ArticleResponse>
+
+    @GET("sources")
+    fun getCountries() : Call<CountryResponse>
+
+    @GET("top-headlines")
+    fun getArticleByCountry(@Query("country") country : String) : Call<ArticleResponse>
+
+    @GET("everything")
+    fun getArticleByCategory(@Query("q") q : String) : Call<ArticleResponse>
 }

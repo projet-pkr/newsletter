@@ -73,6 +73,14 @@ class ArticleOnlineService : ArticleService {
         return service.getArticleBySourcesId(sourceId)?.execute().body()?.articles ?: listOf()
     }
 
+    override fun getArticlesByCountry(country: String): List<Article> {
+        return service.getArticleByCountry(country)?.execute().body()?.articles ?: listOf()
+    }
+
+    override fun getArticlesByCategory(category: String): List<Article> {
+       return service.getArticleByCategory(category)?.execute().body()?.articles ?: listOf()
+    }
+
     companion object {
         private const val apiKey = "d919a51ac9404a64ab2a81d7674219a1"
         private const val apiUrl = "https://newsapi.org/v2/"

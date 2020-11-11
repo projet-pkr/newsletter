@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/category_item"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     android:padding="5dp"
     app:cardCornerRadius="5dp">
-
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -18,25 +20,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxHeight="50dp"
-            android:src="@drawable/ic_launcher_background"
+            android:src="@drawable/placeholder"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"></androidx.appcompat.widget.AppCompatImageView>
-
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
-
             android:id="@+id/category_name"
             style="@style/TextAppearance.AppCompat.Display1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@id/category_image"
             app:layout_constraintEnd_toEndOf="@id/category_image"
             app:layout_constraintStart_toStartOf="@id/category_image"
             app:layout_constraintTop_toTopOf="@id/category_image"
-            tools:text="Politique" />
-
+            tools:text="Category" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </com.google.android.material.card.MaterialCardView>

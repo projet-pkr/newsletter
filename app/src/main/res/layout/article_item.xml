@@ -9,16 +9,14 @@
     app:cardCornerRadius="5dp"
     >
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/article_title"
-            tools:text="Titre"
+            android:text="@string/Titre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
@@ -31,7 +29,7 @@
              />
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/article_source"
-            tools:text="Source"
+            android:text="@string/Source"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
@@ -56,7 +54,7 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/article_description"
-            tools:text="Description"
+            android:text="@string/Description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:maxLines="2"

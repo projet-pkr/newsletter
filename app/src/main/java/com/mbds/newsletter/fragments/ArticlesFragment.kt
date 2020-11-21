@@ -1,7 +1,6 @@
 package com.mbds.newsletter.fragments
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mbds.newsletter.R
 import com.mbds.newsletter.adapters.ArticleAdapter
-import com.mbds.newsletter.data.article.ArticleOnlineService
+import com.mbds.newsletter.services.ArticleOnlineService
 import com.mbds.newsletter.model.Article
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

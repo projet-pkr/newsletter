@@ -3,8 +3,8 @@ package com.mbds.newsletter.model
 import java.util.*
 
 class CountryDto () {
-     lateinit var url : String
-     lateinit var countryName : String
+    lateinit var url : String
+    lateinit var countryName : String
     lateinit var countryCode : String
     private val flagUrl = "https://www.countryflags.io/"
     private val flagSuffix = "/flat/64.png"

@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">Newsletter</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Lire">Lire la suite</string>
+    <string name="Source">Source</string>
+    <string name="Titre">Titre</string>
+    <string name="Description">Description</string>
+    <string name="Details">Details</string>
 </resources>

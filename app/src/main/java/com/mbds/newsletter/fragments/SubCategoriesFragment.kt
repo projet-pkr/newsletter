@@ -12,7 +12,7 @@ import com.mbds.newsletter.MainActivity
 import com.mbds.newsletter.R
 import com.mbds.newsletter.adapters.CategoryAdapter
 import com.mbds.newsletter.changeFragment
-import com.mbds.newsletter.data.source.SourceServiceImpl
+import com.mbds.newsletter.services.SourceServiceImpl
 import com.mbds.newsletter.databinding.FragmentCategoriesBinding
 import com.mbds.newsletter.model.Category
 

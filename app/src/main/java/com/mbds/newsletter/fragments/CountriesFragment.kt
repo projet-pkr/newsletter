@@ -12,15 +12,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mbds.newsletter.MainActivity
 import com.mbds.newsletter.R
 import com.mbds.newsletter.adapters.CountryAdapter
-import com.mbds.newsletter.adapters.SourceAdapter
 import com.mbds.newsletter.changeFragment
-import com.mbds.newsletter.data.source.SourceServiceImpl
-import com.mbds.newsletter.model.Country
+import com.mbds.newsletter.services.SourceServiceImpl
 import com.mbds.newsletter.model.CountryDto
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import javax.xml.transform.Source
 
 /**
  * A simple [Fragment] subclass.

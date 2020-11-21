@@ -11,12 +11,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mbds.newsletter.MainActivity
 import com.mbds.newsletter.R
-import com.mbds.newsletter.adapters.ArticleAdapter
 import com.mbds.newsletter.adapters.SourceAdapter
 import com.mbds.newsletter.changeFragment
-import com.mbds.newsletter.data.source.SourceService
-import com.mbds.newsletter.data.source.SourceServiceImpl
-import com.mbds.newsletter.model.Article
+import com.mbds.newsletter.services.SourceServiceImpl
 import com.mbds.newsletter.model.Source
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch

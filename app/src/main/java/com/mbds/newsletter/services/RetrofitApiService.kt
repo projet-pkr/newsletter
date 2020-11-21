@@ -1,4 +1,4 @@
-package com.mbds.newsletter.data
+package com.mbds.newsletter.services
 
 import com.mbds.newsletter.model.ArticleResponse
 import com.mbds.newsletter.model.CountryResponse

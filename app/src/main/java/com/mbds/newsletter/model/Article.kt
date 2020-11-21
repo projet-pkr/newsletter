@@ -1,5 +1,6 @@
 package com.mbds.newsletter.model
 
+import java.io.Serializable
 import java.util.*
 
 data class ArticleResponse(
@@ -16,4 +17,8 @@ data class Article(
     val urlToImage : String,
     val publishedAt: Date
 )
+    : Serializable {
+
+    data class Source(val id: String?, val name: String) : Serializable
+}
 

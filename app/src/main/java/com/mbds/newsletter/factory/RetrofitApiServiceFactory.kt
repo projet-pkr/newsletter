@@ -1,7 +1,6 @@
 package com.mbds.newsletter.factory
 
-import com.mbds.newsletter.data.RetrofitApiService
-import com.mbds.newsletter.model.Article
+import com.mbds.newsletter.services.RetrofitApiService
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response

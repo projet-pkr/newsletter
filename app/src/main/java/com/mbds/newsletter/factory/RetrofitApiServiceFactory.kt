@@ -71,7 +71,8 @@ class RetrofitApiServiceFactory {
 
 
     companion object {
-        private const val apiKey = "d919a51ac9404a64ab2a81d7674219a1"
+        //d919a51ac9404a64ab2a81d7674219a1
+        private const val apiKey = "2fb42ef26ef5425a8182117ce35bb747"
         private const val apiUrl = "https://newsapi.org/v2/"
         val instance : RetrofitApiService = RetrofitApiServiceFactory().getInstance()
     }

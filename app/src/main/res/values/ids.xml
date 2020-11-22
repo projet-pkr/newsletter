@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="field1" type="id" />
+    <item name="field2" type="id" />
+    <item name="mano" type="id" />
+    <item name="alan" type="id" />
+    <item name="koub" type="id" />
+    <item name="lien" type="id" />
+    <item name="repo" type="id" />
+    <item name="lib" type="id" />
+    <item name="lib1" type="id" />
+    <item name="lib2" type="id" />
+    <item name="lib3" type="id" />
+    <item name="fonct" type="id" />
+    <item name="fonct1" type="id" />
+    <item name="fonct2" type="id" />
+    <item name="fonct3" type="id" />
+    <item name="fonct4" type="id" />
+    <item name="fonct5" type="id" />
+</resources>

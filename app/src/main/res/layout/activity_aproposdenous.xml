@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".model.aproposdenous">
+
+
+    <TextView
+        android:id="@+id/field1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom|center"
+        android:text="A propos de nous"
+        android:textColor="@color/white"
+        android:background="@color/blue"
+        android:textSize="28dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/field2"
+        app:layout_constraintHeight_percent="0.10"
+        android:textColor="@color/blue"
+        android:text="Membres du groupe "
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/field1"
+        android:gravity="left"
+        android:paddingLeft="20dp"
+        android:textSize="25sp"
+        android:paddingRight="5dp" />
+
+    <TextView
+        android:id="@+id/mano"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintHeight_percent="0.05"
+        android:textColor="@color/black"
+        android:text="RANDRIANANDRAINA Manotiana "
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/field2"
+        android:gravity="left"
+        android:paddingLeft="20dp"
+        android:textSize="15sp">
+    </TextView>
+    <TextView
+        android:id="@+id/alan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintHeight_percent="0.05"
+        android:textColor="@color/black"
+        android:text="PAJANY Allan "
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mano"
+        android:gravity="left"
+        android:paddingLeft="20dp"
+        android:textSize="15sp">
+    </TextView>
+    <TextView
+        android:id="@+id/koub"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintHeight_percent="0.05"
+        android:textColor="@color/black"
+        android:text="KOUBIKANI LOUBOTA Janssen "
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/alan"
+        android:gravity="left"
+        android:paddingLeft="20dp"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lien"
+        app:layout_constraintHeight_percent="0.10"
+        android:textColor="@color/blue"
+        android:text="Lien du repo "
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/koub"
+        android:gravity="left"
+        android:paddingLeft="20dp"
+        android:textSize="25sp"
+        android:paddingRight="5dp" />
+
+
+    <TextView
+        android:id="@+id/repo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintHeight_percent="0.05"
+        android:textColor="@color/blue"
+        android:text="https://github.com/projet-pkr/newsletter "
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lien"
+        android:gravity="left"
+        android:paddingLeft="20dp"
+        android:autoLink="web"
+        android:textColorLink="@color/blue"
+        android:textSize="15sp"
+        android:paddingRight="5dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lib"
+        app:layout_constraintHeight_percent="0.10"
+        android:textColor="@color/blue"
+        android:text="Librairies externes "
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/repo"
+        android:gravity="left"
+        android:paddingLeft="20dp"
+        android:textSize="25sp"
+        android:paddingRight="5dp" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/fonct"
+        app:layout_constraintHeight_percent="0.10"
+        android:textColor="@color/blue"
+        android:text="Fonctionalités "
+        android:paddingTop="10dp"
+        android:paddingBottom="5dp"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lib"
+        android:paddingLeft="20dp"
+        android:textSize="25sp"
+        android:paddingRight="5dp" />
+
+    <TextView
+        android:id="@+id/fonct1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintHeight_percent="0.05"
+        android:textColor="@color/black"
+        android:text="Liste des articles par catégorie"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fonct"
+        android:gravity="left"
+        android:paddingLeft="20dp"
+        android:textSize="15sp"
+        android:paddingRight="5dp"/>
+
+    <TextView
+        android:id="@+id/fonct2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintHeight_percent="0.05"
+        android:textColor="@color/black"
+        android:text="Liste des articles par éditeurs"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fonct1"
+        android:gravity="left"
+        android:paddingLeft="20dp"
+        android:textSize="15sp"
+        android:paddingRight="5dp"/>
+
+    <TextView
+        android:id="@+id/fonct3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintHeight_percent="0.05"
+        android:textColor="@color/black"
+        android:text="Liste des articles par pays"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fonct2"
+        android:gravity="left"
+        android:paddingLeft="20dp"
+        android:textSize="15sp"
+        android:paddingRight="5dp"/>
+
+    <TextView
+        android:id="@+id/fonct4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintHeight_percent="0.05"
+        android:textColor="@color/black"
+        android:text="Gestion des favoris"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fonct3"
+        android:gravity="left"
+        android:paddingLeft="20dp"
+        android:textSize="15sp"
+        android:paddingRight="5dp"/>
+
+    <TextView
+        android:id="@+id/fonct5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintHeight_percent="0.05"
+        android:textColor="@color/black"
+        android:text="Détail d'un article"
+        app:layout_constraintHorizontal_weight="1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fonct4"
+        android:gravity="left"
+        android:paddingLeft="20dp"
+        android:textSize="15sp"
+        android:paddingRight="5dp"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

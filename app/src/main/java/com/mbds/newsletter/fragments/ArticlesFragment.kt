@@ -2,13 +2,6 @@ package com.mbds.newsletter.fragments
 
 import android.app.Application
 import android.os.Bundle
-
-
-
-
-
-
-
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +9,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.*
-
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mbds.newsletter.MainActivity
@@ -28,8 +20,6 @@ import com.mbds.newsletter.model.Article
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import com.mbds.newsletter.NewsletterApplication
-import com.mbds.newsletter.NewsletterApplication.Companion.getRepository
 import com.mbds.newsletter.data.article.ArticleRepository
 import com.mbds.newsletter.factory.ArticleEntityFactory
 import com.mbds.newsletter.model.ArticleEntity
@@ -44,7 +34,6 @@ class ArticlesFragment : Fragment() , LifecycleObserver {
 
     lateinit var application: Application
     lateinit var articleRepository : ArticleRepository
-
     lateinit var articleOnlineService : ArticleOnlineService
 
     lateinit var sourceId: String
@@ -71,7 +60,6 @@ class ArticlesFragment : Fragment() , LifecycleObserver {
 
     private suspend fun getData(view: View){
         withContext(Dispatchers.IO){
-            //val result = repository.list()
 
             val result = when(type){
                 "1" -> articleOnlineService.getArticlesBySourceId(sourceId)
@@ -84,6 +72,7 @@ class ArticlesFragment : Fragment() , LifecycleObserver {
                    listOf<Article>()
                 }
             }
+
             //transform article to article entity
             val entitiesArticles : List<ArticleEntity>
             entitiesArticles = if(type != "4"){
@@ -97,13 +86,8 @@ class ArticlesFragment : Fragment() , LifecycleObserver {
             }
 
             articleRepository.insertArticles(entitiesArticles)
-           /*if(type != "4"){
-                bindData(result , view = view)
-            }else{
-                bindData(view = view,listFavorite = entitiesArticles)
-            }*/
-            bindData(result, view)
 
+            bindData(result, view)
         }
     }
     private suspend fun bindData(result : List<Article>? = emptyList(),view: View){
@@ -118,10 +102,6 @@ class ArticlesFragment : Fragment() , LifecycleObserver {
             val adapterRecycler = ArticleAdapter(listOfArticles.toMutableList(), articleRepository, displayFavorite){
                 itemClicked(it)
             }
-
-            /*val adapterRecycler = ArticleAdapter(listOfArticles.toMutableList()){
-                itemClicked(it)
-            }*/
 
             val gridLayoutManager = GridLayoutManager(view.context, 1)
             recyclerView.layoutManager = gridLayoutManager
@@ -162,5 +142,4 @@ class ArticlesFragment : Fragment() , LifecycleObserver {
                 }.keys.first().toString()
             }
     }
-
 }

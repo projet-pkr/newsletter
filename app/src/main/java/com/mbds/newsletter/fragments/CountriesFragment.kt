@@ -52,6 +52,7 @@ class CountriesFragment : Fragment() {
             bindData(resultDto, view)
         }
     }
+
     private suspend fun bindData(result : List<CountryDto>?, view: View){
         withContext(Dispatchers.Main){
             //display data in the recycler

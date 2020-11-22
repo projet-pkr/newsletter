@@ -1,7 +1,5 @@
 package com.mbds.newsletter.data.article
 
-
-
 import androidx.room.Dao
 import androidx.room.Query
 import com.mbds.newsletter.data.CommonDao

@@ -42,7 +42,6 @@ class SourcesFragment : Fragment() {
         lifecycleScope.launch{
             getData(view)
         }
-
     }
 
     private suspend fun getData(view: View){

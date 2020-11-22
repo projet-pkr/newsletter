@@ -30,6 +30,7 @@ class SubCategoriesFragment : Fragment() {
         binding = FragmentCategoriesBinding.inflate(inflater,container,false)
         return binding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val recyclerView : RecyclerView = view.findViewById(R.id.recycler_view)
@@ -41,8 +42,8 @@ class SubCategoriesFragment : Fragment() {
 
         recyclerView.adapter = categoryAdapter
     }
+
     private fun itemClicked(category: Category) {
-        // context?.toast(category.name)
         Toast.makeText(
             context,
             category.name,
@@ -54,7 +55,6 @@ class SubCategoriesFragment : Fragment() {
     }
 
     companion object {
-
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance() =

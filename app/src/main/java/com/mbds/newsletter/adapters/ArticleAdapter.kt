@@ -6,18 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.content.res.AppCompatResources.getDrawable
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mbds.newsletter.R
 import com.mbds.newsletter.data.article.ArticleRepository
 import com.mbds.newsletter.factory.ArticleEntityFactory
 import com.mbds.newsletter.model.Article
-import com.mbds.newsletter.model.ArticleEntity
 import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers
-
 
 
 class ArticleAdapter ( private val dataset: MutableList<Article>,  val articleRepository: ArticleRepository, val displayFavorite : String = "", val clickListener : (Article) -> Unit) : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
@@ -33,14 +29,12 @@ class ArticleAdapter ( private val dataset: MutableList<Article>,  val articleRe
 
             val favoriteIcon = root.findViewById<ImageView>(R.id.favorite_icon)
 
-           // addPaddingAndBackground(articleDesc, item.description)
-
-
             txtTitle.text = item.title
             articleSource.text = item.source.name
             articleDesc.text = item.description
             Log.d("favorite_view_holder", "$favoriteStatus")
             favoriteIcon.setImageResource(R.drawable.ic_favorite_empty)
+
             //if article in favoriteArticle
             when(favoriteStatus){
                 1 ->  Glide.with(root).load(R.drawable.ic_favorite_add).into(favoriteIcon)
@@ -51,11 +45,6 @@ class ArticleAdapter ( private val dataset: MutableList<Article>,  val articleRe
             }
 
             favoriteIcon.setOnClickListener {
-                /*Toast.makeText(
-                        root.context,
-                        item.title,
-                        Toast.LENGTH_LONG
-                ).show()*/
                 when(favoriteStatus){
                     0 -> {
                         CoroutineScope(Dispatchers.IO).launch {
@@ -75,7 +64,6 @@ class ArticleAdapter ( private val dataset: MutableList<Article>,  val articleRe
                         }
                     }
                     else -> {
-
                     }
                 }
             }
@@ -86,7 +74,6 @@ class ArticleAdapter ( private val dataset: MutableList<Article>,  val articleRe
                 .fitCenter()
                 .placeholder(R.drawable.placeholder)
                 .into(imageView)
-
 
             root.setOnClickListener {
                 clickListener(item)
@@ -124,16 +111,5 @@ class ArticleAdapter ( private val dataset: MutableList<Article>,  val articleRe
                 holder.bind(dataset[position], position, articleRepository, favoriteStatus,displayFavorite, clickListener)
             }
         }
-
-
     }
-
-    /*fun addNextResults(itemsNew: List<ArticleEntity>){
-        dataset.addAll(itemsNew)
-        notifyDataSetChanged()
-    }*/
-
-
-       // holder.bind(dataset[position], clickListener)
-    }
-
+}

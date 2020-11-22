@@ -40,6 +40,6 @@ data class ArticleEntity(
     val publishedAt: String?,
     @ColumnInfo(name = "favorite_status") var favoriteStatus : Int
 )
-class ArticleDto(){
 
+class ArticleDto(){
 }

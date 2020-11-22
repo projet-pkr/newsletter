@@ -18,6 +18,7 @@ class CountryDto () {
             }
     }
 }
+
 data class Country(val country: String)
 
 data class CountryResponse(

@@ -8,9 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.mbds.newsletter.R
-import com.mbds.newsletter.model.Country
 import com.mbds.newsletter.model.CountryDto
-import com.mbds.newsletter.model.Source
 
 class CountryAdapter (private val dataset: List<CountryDto>, val clickListener : (CountryDto) -> Unit) : RecyclerView.Adapter<CountryAdapter.ViewHolder>(){
 

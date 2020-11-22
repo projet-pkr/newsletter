@@ -49,10 +49,8 @@
             android:layout_height="match_parent"
             app:layout_constraintBottom_toTopOf="@id/article_description"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/article_title"
-            app:layout_constraintVertical_bias="1.0"
             tools:src="@drawable/placeholder" />
 
 
@@ -71,13 +69,14 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/favorite_icon"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="25dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="10dp"
             app:srcCompat="@drawable/ic_favorite_empty"
             app:layout_constraintTop_toBottomOf="@id/article_source"
             app:layout_constraintStart_toStartOf="parent"
-            />
+            android:layout_marginStart="10dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>

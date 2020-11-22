@@ -2,9 +2,6 @@ package com.mbds.newsletter.factory
 
 import com.mbds.newsletter.model.Article
 import com.mbds.newsletter.model.ArticleEntity
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
-import java.util.*
 
 class ArticleEntityFactory {
 
@@ -19,6 +16,7 @@ class ArticleEntityFactory {
             article.publishedAt,
             status
         )
+
         fun newArticleInstance(articleEntity : ArticleEntity) = Article(
             Article.Source(
                 "",
@@ -31,8 +29,7 @@ class ArticleEntityFactory {
             "",
             articleEntity.url ?:"",
             articleEntity.urlToImage ?:"",
-             articleEntity.publishedAt ?: ""
+            articleEntity.publishedAt ?: ""
         )
-
     }
 }

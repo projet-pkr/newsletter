@@ -28,7 +28,6 @@ class CountriesFragment : Fragment() {
 
     private  lateinit var sourceService : SourceServiceImpl
 
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -41,6 +40,7 @@ class CountriesFragment : Fragment() {
             getData(view);
         }
     }
+
     private suspend fun getData(view: View){
         withContext(Dispatchers.IO){
             //val result = repository.list()
@@ -49,7 +49,6 @@ class CountriesFragment : Fragment() {
             val resultDto = result.map {
                 CountryDto.newInstance(it.country)
             }
-
             bindData(resultDto, view)
         }
     }
@@ -66,26 +65,23 @@ class CountriesFragment : Fragment() {
             val gridLayoutManager = GridLayoutManager(view.context, 1)
             recyclerView.layoutManager = gridLayoutManager
             recyclerView.adapter = sourceAdapter
-
-
         }
     }
+
     private fun itemClicked(country : CountryDto){
         Toast.makeText(
-                context,
-                country.countryName,
-                Toast.LENGTH_LONG
+            context,
+            country.countryName,
+            Toast.LENGTH_LONG
         ).show()
         (activity as? MainActivity)?.changeFragment(
-                ArticlesFragment.newInstance(countryId = country.countryCode)
+            ArticlesFragment.newInstance(countryId = country.countryCode)
         )
     }
 
     companion object {
         @JvmStatic
         fun newInstance() =
-                CountriesFragment().apply {
-                    this.sourceService = SourceServiceImpl()
-                }
+            CountriesFragment().apply { this.sourceService = SourceServiceImpl() }
     }
 }

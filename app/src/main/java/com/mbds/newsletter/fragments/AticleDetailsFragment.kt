@@ -34,7 +34,10 @@ class AticleDetailsFragment : Fragment() {
         binding.articleTitle.text = article?.title
         binding.articleSource.text = article?.source?.name
         binding.articleDescription.text = article?.description
+        binding.articleAuthor.text = article?.author
         binding.articleDetail.text = article?.content
+
+        // Redirection navigateur Web
         binding.redirectionArticle.setOnClickListener{
             val intent = Intent(Intent.ACTION_VIEW)
             intent.data = Uri.parse(article?.url)
@@ -56,7 +59,6 @@ class AticleDetailsFragment : Fragment() {
         /**
          * Use this factory method to create a new instance of
          * this fragment using the provided parameters.
-         *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
          * @return A new instance of fragment ArticlesFragment.
@@ -65,9 +67,7 @@ class AticleDetailsFragment : Fragment() {
         @JvmStatic
         fun newInstance(article: Article) =
             AticleDetailsFragment().apply {
-                arguments = Bundle().apply {
-                    putSerializable("Article_Details", article)
-                }
+                arguments = Bundle().apply { putSerializable("Article_Details", article)}
             }
     }
 }

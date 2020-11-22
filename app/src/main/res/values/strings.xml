@@ -9,4 +9,5 @@
     <string name="Details">Details</string>
     <string name="action_favoris">Favoris</string>
     <string name="action_a_propos">A propos</string>
+    <string name="Auteur"><u><b><i>Auteur</i></b></u></string>
 </resources>

@@ -32,8 +32,6 @@ class CategoriesFragment : Fragment() {
     private var param2: String? = null
     lateinit var binding : FragmentCategoriesBinding
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,7 +43,7 @@ class CategoriesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val recyclerView : RecyclerView = view.findViewById(R.id.recycler_view)
-        val categories : List<Category> = Data.getCategories()
+        val categories : List<Category> = Data.getOptions()
         val categoryAdapter = CategoryAdapter(categories){
             itemClicked(it)
         }
@@ -71,7 +69,6 @@ class CategoriesFragment : Fragment() {
             //sub-categories like editor
                fragment
         )
-
     }
 
     companion object {

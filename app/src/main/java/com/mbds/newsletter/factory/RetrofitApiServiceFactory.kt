@@ -60,8 +60,7 @@ class RetrofitApiServiceFactory {
                     .addQueryParameter("apikey", apiKey)
                     .build()
 
-                val requestBuilder = original.newBuilder()
-                    .url(url)
+                val requestBuilder = original.newBuilder().url(url)
                 val request = requestBuilder.build()
                 return chain.proceed(request)
             }

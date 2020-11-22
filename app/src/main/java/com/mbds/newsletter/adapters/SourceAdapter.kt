@@ -6,9 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
 import com.mbds.newsletter.R
-import com.mbds.newsletter.model.Category
 import com.mbds.newsletter.model.Source
 
 class SourceAdapter (private val dataset: List<Source>, val clickListener : (Source) -> Unit) : RecyclerView.Adapter<SourceAdapter.ViewHolder>(){
@@ -17,20 +15,10 @@ class SourceAdapter (private val dataset: List<Source>, val clickListener : (Sou
         fun bind(item: Source, clickListener: (Source) -> Unit) {
             val txtTitle = root.findViewById<TextView>(R.id.category_name)
             val imageView = root.findViewById<ImageView>(R.id.category_image)
-            //val txtDesc = root.findViewById<TextView>(R.id.article_description)
             txtTitle.text = item.name
-            //txtDesc.text = item.description
-           /* Glide
-                .with(root)
-                .load(item.image)
-                .fitCenter()
-                .placeholder(R.drawable.placeholder)
-                .into(imageView);*/
-
             root.setOnClickListener {
                 clickListener(item)
             }
-
         }
     }
 

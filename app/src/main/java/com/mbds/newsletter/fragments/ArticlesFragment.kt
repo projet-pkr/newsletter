@@ -5,11 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.mbds.newsletter.MainActivity
 import com.mbds.newsletter.R
 import com.mbds.newsletter.adapters.ArticleAdapter
+import com.mbds.newsletter.changeFragment
 import com.mbds.newsletter.services.ArticleOnlineService
 import com.mbds.newsletter.model.Article
 import kotlinx.coroutines.Dispatchers
@@ -24,7 +27,7 @@ import kotlinx.coroutines.withContext
  */
 class ArticlesFragment : Fragment() {
 
-    lateinit var  articleOnlineService : ArticleOnlineService
+    lateinit var articleOnlineService : ArticleOnlineService
     lateinit var sourceId: String
     lateinit var countryId : String
     lateinit var category : String
@@ -50,6 +53,7 @@ class ArticlesFragment : Fragment() {
     private suspend fun getData(view: View){
         withContext(Dispatchers.IO){
             //val result = repository.list()
+
             val result = when(type){
                 "1" -> articleOnlineService.getArticlesBySourceId(sourceId)
                 "2" -> articleOnlineService.getArticlesByCategory(category)
@@ -65,18 +69,28 @@ class ArticlesFragment : Fragment() {
     private suspend fun bindData(result : List<Article>?, view: View){
         withContext(Dispatchers.Main){
             //display data in the recycler
-            /* val textView = view?.findViewById<TextView>(R.id.text1)
-               textView?.text = result?.get(0)?.description*/
             val recyclerView: RecyclerView = view.findViewById(R.id.article_recycler_view)
             val listOfArticles = result ?: emptyList()
-            val adapterRecycler = ArticleAdapter(listOfArticles.toMutableList())
+            val adapterRecycler = ArticleAdapter(listOfArticles.toMutableList()){
+                itemClicked(it)
+            }
             val gridLayoutManager = GridLayoutManager(view.context, 1)
             recyclerView.layoutManager = gridLayoutManager
             recyclerView.adapter = adapterRecycler
-
-
         }
     }
+
+    private fun itemClicked(article: Article){
+        Toast.makeText(
+            context,
+            article.title,
+            Toast.LENGTH_LONG
+        ).show()
+        (activity as? MainActivity)?.changeFragment(
+            AticleDetailsFragment.newInstance(article)
+        )
+    }
+
     companion object {
         /**
          * Use this factory method to create a new instance of

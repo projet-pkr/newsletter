@@ -7,4 +7,6 @@
     <string name="Titre">Titre</string>
     <string name="Description">Description</string>
     <string name="Details">Details</string>
+    <string name="action_favoris">Favoris</string>
+    <string name="action_a_propos">A propos</string>
 </resources>

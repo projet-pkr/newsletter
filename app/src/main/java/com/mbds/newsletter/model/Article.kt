@@ -8,17 +8,14 @@ data class ArticleResponse(
     val totalResults: Int?,
     val articles : List<Article>?
 )
+
 data class Article(
     val source: Source,
     val author: String,
     val title : String,
     val description: String,
+    val content: String,
     val url : String,
     val urlToImage : String,
     val publishedAt: Date
-)
-    : Serializable {
-
-    data class Source(val id: String?, val name: String) : Serializable
-}
-
+): Serializable { data class Source(val name: String) : Serializable }

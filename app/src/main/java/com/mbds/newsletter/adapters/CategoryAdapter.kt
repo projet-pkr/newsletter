@@ -16,9 +16,8 @@ class CategoryAdapter (private val dataset: List<Category>, val clickListener : 
         fun bind(item: Category, clickListener: (Category) -> Unit) {
             val txtTitle = root.findViewById<TextView>(R.id.category_name)
             val imageView = root.findViewById<ImageView>(R.id.category_image)
-            //val txtDesc = root.findViewById<TextView>(R.id.article_description)
             txtTitle.text = item.name
-            //txtDesc.text = item.description
+
             Glide
                 .with(root)
                 .load(item.image)
@@ -29,7 +28,6 @@ class CategoryAdapter (private val dataset: List<Category>, val clickListener : 
             root.setOnClickListener {
                 clickListener(item)
             }
-
         }
     }
 

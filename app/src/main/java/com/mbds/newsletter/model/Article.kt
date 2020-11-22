@@ -18,4 +18,6 @@ data class Article(
     val url : String,
     val urlToImage : String,
     val publishedAt: Date
-): Serializable { data class Source(val name: String) : Serializable }
+): Serializable { data class Source(val id : String,
+                                    val name: String,
+                                    val description: String) : Serializable }

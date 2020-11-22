@@ -11,12 +11,9 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.mbds.newsletter.MainActivity
 import com.mbds.newsletter.R
-import com.mbds.newsletter.adapters.ArticleAdapter
 import com.mbds.newsletter.adapters.SourceAdapter
 import com.mbds.newsletter.changeFragment
-import com.mbds.newsletter.data.source.SourceService
-import com.mbds.newsletter.data.source.SourceServiceImpl
-import com.mbds.newsletter.model.Article
+import com.mbds.newsletter.services.SourceServiceImpl
 import com.mbds.newsletter.model.Source
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -47,6 +44,7 @@ class SourcesFragment : Fragment() {
         }
 
     }
+
     private suspend fun getData(view: View){
         withContext(Dispatchers.IO){
             //val result = repository.list()
@@ -54,6 +52,7 @@ class SourcesFragment : Fragment() {
             bindData(result, view)
         }
     }
+
     private suspend fun bindData(result : List<Source>?, view: View){
         withContext(Dispatchers.Main){
             //display data in the recycler
@@ -67,8 +66,6 @@ class SourcesFragment : Fragment() {
             val gridLayoutManager = GridLayoutManager(view.context, 1)
             recyclerView.layoutManager = gridLayoutManager
             recyclerView.adapter = sourceAdapter
-
-
         }
     }
 
@@ -85,13 +82,9 @@ class SourcesFragment : Fragment() {
         )
     }
 
-
-
     companion object {
         @JvmStatic
         fun newInstance() =
-            SourcesFragment().apply {
-                this.sourceService = SourceServiceImpl()
-            }
+            SourcesFragment().apply { this.sourceService = SourceServiceImpl() }
     }
 }

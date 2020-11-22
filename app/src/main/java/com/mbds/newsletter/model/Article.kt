@@ -1,8 +1,12 @@
 package com.mbds.newsletter.model
 
+
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+
+import java.io.Serializable
+
 import java.util.*
 
 data class ArticleResponse(
@@ -16,10 +20,14 @@ data class Article(
     val author: String,
     val title : String,
     val description: String,
+    val content: String,
     val url : String,
     val urlToImage : String,
     val publishedAt: Date
-)
+
+): Serializable { data class Source(val id : String,
+                                    val name: String,
+                                    val description: String) : Serializable }
 
 @Entity(tableName = "articles")
 data class ArticleEntity(
@@ -35,4 +43,3 @@ data class ArticleEntity(
 class ArticleDto(){
 
 }
-

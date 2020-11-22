@@ -18,9 +18,8 @@ class CountryAdapter (private val dataset: List<CountryDto>, val clickListener :
         fun bind(item: CountryDto, clickListener: (CountryDto) -> Unit) {
             val txtTitle = root.findViewById<TextView>(R.id.country_name)
             val imageView = root.findViewById<ImageView>(R.id.country_flag)
-            //val txtDesc = root.findViewById<TextView>(R.id.article_description)
             txtTitle.text =  item.countryName
-            //txtDesc.text = item.description
+
             Glide
                  .with(root)
                  .load(item.url)
@@ -31,7 +30,6 @@ class CountryAdapter (private val dataset: List<CountryDto>, val clickListener :
             root.setOnClickListener {
                 clickListener(item)
             }
-
         }
     }
 

@@ -5,11 +5,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/category_item"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="10dp"
     android:padding="5dp"
-    app:cardCornerRadius="5dp">
+    app:cardCornerRadius="20dp"
+    app:cardBackgroundColor="@color/black">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -19,8 +20,8 @@
             android:id="@+id/category_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxHeight="50dp"
             android:src="@drawable/placeholder"
+            android:maxHeight="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -28,11 +29,12 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/category_name"
             style="@style/TextAppearance.AppCompat.Display1"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
+            android:textColor="@color/white"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/category_image"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="@id/category_image"
             app:layout_constraintStart_toStartOf="@id/category_image"
             app:layout_constraintTop_toTopOf="@id/category_image"

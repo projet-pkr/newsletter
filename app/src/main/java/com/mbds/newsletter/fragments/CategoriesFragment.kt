@@ -12,6 +12,7 @@ import com.mbds.newsletter.MainActivity
 import com.mbds.newsletter.R
 import com.mbds.newsletter.adapters.CategoryAdapter
 import com.mbds.newsletter.changeFragment
+import com.mbds.newsletter.data.Data
 import com.mbds.newsletter.databinding.FragmentCategoriesBinding
 import com.mbds.newsletter.model.Category
 
@@ -31,8 +32,6 @@ class CategoriesFragment : Fragment() {
     private var param2: String? = null
     lateinit var binding : FragmentCategoriesBinding
 
-
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -44,11 +43,7 @@ class CategoriesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val recyclerView : RecyclerView = view.findViewById(R.id.recycler_view)
-        val categories : List<Category> = listOf(
-            Category("source","Editeur","https://picsum.photos/seed/picsum/500/300"),
-            Category("category","Categories","https://picsum.photos/seed/picsum/500/300"),
-            Category("country","Pays","https://picsum.photos/seed/picsum/500/300")
-        )
+        val categories : List<Category> = Data.getOptions()
         val categoryAdapter = CategoryAdapter(categories){
             itemClicked(it)
         }
@@ -74,7 +69,6 @@ class CategoriesFragment : Fragment() {
             //sub-categories like editor
                fragment
         )
-
     }
 
     companion object {

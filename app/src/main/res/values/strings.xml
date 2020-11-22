@@ -1,8 +1,19 @@
 <resources>
     <string name="app_name">Newsletter</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="settings">settings</string>
     <string name="favoris">Favoris</string>
     <string name="about_us">About us</string>
+
+    <string name="Lire">Lire la suite</string>
+    <string name="Source">Source</string>
+    <string name="Titre">Titre</string>
+    <string name="Description">Description</string>
+    <string name="Details">Details</string>
+    <string name="action_favoris">Favoris</string>
+    <string name="action_a_propos">A propos</string>
+    <string name="Auteur"><u><b><i>Auteur</i></b></u></string>
+
 </resources>

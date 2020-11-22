@@ -1,23 +1,20 @@
-package com.mbds.newsletter.data.article
+package com.mbds.newsletter.services
 
-import com.mbds.newsletter.data.RetrofitApiService
-import com.mbds.newsletter.factory.RetrofitApiServiceFactory
 import com.mbds.newsletter.model.Article
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class ArticleOnlineService : ArticleService {
 
-    private val service: RetrofitApiService = RetrofitApiServiceFactory.instance
+    private val service: RetrofitApiService
 
     init {
-        //val retrofit = buildClient()
+        val retrofit = buildClient()
         //Init the api service with retrofit
-        //service = retrofit.create(RetrofitApiService::class.java)
+        service = retrofit.create(RetrofitApiService::class.java)
     }
     /**
      * Configure retrofit
@@ -50,19 +47,17 @@ class ArticleOnlineService : ArticleService {
      * the api key as query parameter
      */
     private fun addApiInterceptor(builder: OkHttpClient.Builder) {
-        builder.addInterceptor(object : Interceptor {
-            override fun intercept(chain: Interceptor.Chain): Response {
-                val original = chain.request()
-                val originalHttpUrl = original.url
-                val url = originalHttpUrl.newBuilder()
-                    .addQueryParameter("apikey", apiKey)
-                    .build()
+        builder.addInterceptor(Interceptor { chain ->
+            val original = chain.request()
+            val originalHttpUrl = original.url
+            val url = originalHttpUrl.newBuilder()
+                .addQueryParameter("apikey", apiKey)
+                .build()
 
-                val requestBuilder = original.newBuilder()
-                    .url(url)
-                val request = requestBuilder.build()
-                return chain.proceed(request)
-            }
+            val requestBuilder = original.newBuilder()
+                .url(url)
+            val request = requestBuilder.build()
+            chain.proceed(request)
         })
     }
 
@@ -70,15 +65,15 @@ class ArticleOnlineService : ArticleService {
         return service.list().execute().body()?.articles ?: listOf()
     }
     override fun getArticlesBySourceId(sourceId : String) : List<Article> {
-        return service.getArticleBySourcesId(sourceId)?.execute().body()?.articles ?: listOf()
+        return service.getArticleBySourcesId(sourceId).execute().body()?.articles ?: listOf()
     }
 
     override fun getArticlesByCountry(country: String): List<Article> {
-        return service.getArticleByCountry(country)?.execute().body()?.articles ?: listOf()
+        return service.getArticleByCountry(country).execute().body()?.articles ?: listOf()
     }
 
     override fun getArticlesByCategory(category: String): List<Article> {
-       return service.getArticleByCategory(category)?.execute().body()?.articles ?: listOf()
+       return service.getArticleByCategory(category).execute().body()?.articles ?: listOf()
     }
 
     companion object {

@@ -2,16 +2,28 @@ package com.mbds.newsletter.fragments
 
 import android.app.Application
 import android.os.Bundle
+
+
+
+
+
+
+
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.*
+
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.mbds.newsletter.MainActivity
 import com.mbds.newsletter.R
 import com.mbds.newsletter.adapters.ArticleAdapter
-import com.mbds.newsletter.data.article.ArticleOnlineService
+import com.mbds.newsletter.changeFragment
+import com.mbds.newsletter.services.ArticleOnlineService
 import com.mbds.newsletter.model.Article
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -33,7 +45,7 @@ class ArticlesFragment : Fragment() , LifecycleObserver {
     lateinit var application: Application
     lateinit var articleRepository : ArticleRepository
 
-    lateinit var  articleOnlineService : ArticleOnlineService
+    lateinit var articleOnlineService : ArticleOnlineService
 
     lateinit var sourceId: String
     lateinit var countryId : String
@@ -60,6 +72,7 @@ class ArticlesFragment : Fragment() , LifecycleObserver {
     private suspend fun getData(view: View){
         withContext(Dispatchers.IO){
             //val result = repository.list()
+
             val result = when(type){
                 "1" -> articleOnlineService.getArticlesBySourceId(sourceId)
                 "2" -> articleOnlineService.getArticlesByCategory(category)
@@ -86,21 +99,37 @@ class ArticlesFragment : Fragment() , LifecycleObserver {
     private suspend fun bindData(result : List<ArticleEntity>?, view: View){
         withContext(Dispatchers.Main){
             //display data in the recycler
-            /* val textView = view?.findViewById<TextView>(R.id.text1)
-               textView?.text = result?.get(0)?.description*/
             val recyclerView: RecyclerView = view.findViewById(R.id.article_recycler_view)
             val listOfArticles = result ?: emptyList()
+
             var displayFavorite : String = ""
             if(type == "4")
                 displayFavorite = "displayFavorite"
-            val adapterRecycler = ArticleAdapter(listOfArticles.toMutableList(), articleRepository, displayFavorite)
+            val adapterRecycler = ArticleAdapter(listOfArticles.toMutableList(), articleRepository, displayFavorite){
+                itemClicked(it)
+            }
+
+            val adapterRecycler = ArticleAdapter(listOfArticles.toMutableList()){
+                itemClicked(it)
+            }
+
             val gridLayoutManager = GridLayoutManager(view.context, 1)
             recyclerView.layoutManager = gridLayoutManager
             recyclerView.adapter = adapterRecycler
-
-
         }
     }
+
+    private fun itemClicked(article: Article){
+        Toast.makeText(
+            context,
+            article.title,
+            Toast.LENGTH_LONG
+        ).show()
+        (activity as? MainActivity)?.changeFragment(
+            AticleDetailsFragment.newInstance(article)
+        )
+    }
+
     companion object {
         /**
          * Use this factory method to create a new instance of

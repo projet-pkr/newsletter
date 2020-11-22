@@ -12,15 +12,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.mbds.newsletter.MainActivity
 import com.mbds.newsletter.R
 import com.mbds.newsletter.adapters.CountryAdapter
-import com.mbds.newsletter.adapters.SourceAdapter
 import com.mbds.newsletter.changeFragment
-import com.mbds.newsletter.data.source.SourceServiceImpl
-import com.mbds.newsletter.model.Country
+import com.mbds.newsletter.services.SourceServiceImpl
 import com.mbds.newsletter.model.CountryDto
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import javax.xml.transform.Source
 
 /**
  * A simple [Fragment] subclass.
@@ -30,7 +27,6 @@ import javax.xml.transform.Source
 class CountriesFragment : Fragment() {
 
     private  lateinit var sourceService : SourceServiceImpl
-
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -44,6 +40,7 @@ class CountriesFragment : Fragment() {
             getData(view);
         }
     }
+
     private suspend fun getData(view: View){
         withContext(Dispatchers.IO){
             //val result = repository.list()
@@ -52,7 +49,6 @@ class CountriesFragment : Fragment() {
             val resultDto = result.map {
                 CountryDto.newInstance(it.country)
             }
-
             bindData(resultDto, view)
         }
     }
@@ -69,26 +65,23 @@ class CountriesFragment : Fragment() {
             val gridLayoutManager = GridLayoutManager(view.context, 1)
             recyclerView.layoutManager = gridLayoutManager
             recyclerView.adapter = sourceAdapter
-
-
         }
     }
+
     private fun itemClicked(country : CountryDto){
         Toast.makeText(
-                context,
-                country.countryName,
-                Toast.LENGTH_LONG
+            context,
+            country.countryName,
+            Toast.LENGTH_LONG
         ).show()
         (activity as? MainActivity)?.changeFragment(
-                ArticlesFragment.newInstance(countryId = country.countryCode)
+            ArticlesFragment.newInstance(countryId = country.countryCode)
         )
     }
 
     companion object {
         @JvmStatic
         fun newInstance() =
-                CountriesFragment().apply {
-                    this.sourceService = SourceServiceImpl()
-                }
+            CountriesFragment().apply { this.sourceService = SourceServiceImpl() }
     }
 }

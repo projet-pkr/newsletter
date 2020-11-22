@@ -1,10 +1,9 @@
 package com.mbds.newsletter.factory
 
-import androidx.room.ColumnInfo
-import androidx.room.PrimaryKey
 import com.mbds.newsletter.model.Article
 import com.mbds.newsletter.model.ArticleEntity
-import com.mbds.newsletter.model.Source
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.util.*
 
 class ArticleEntityFactory {
@@ -17,8 +16,23 @@ class ArticleEntityFactory {
             article.description,
             article.url,
             article.urlToImage,
-            article.publishedAt.toString(),
+            article.publishedAt,
             status
         )
+        fun newArticleInstance(articleEntity : ArticleEntity) = Article(
+            Article.Source(
+                "",
+                articleEntity.source ?: "",
+                ""
+            ),
+            articleEntity.author ?:"",
+            articleEntity.title ?:"",
+            articleEntity.description ?:"",
+            "",
+            articleEntity.url ?:"",
+            articleEntity.urlToImage ?:"",
+             articleEntity.publishedAt ?: ""
+        )
+
     }
 }

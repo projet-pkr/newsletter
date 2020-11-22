@@ -77,26 +77,36 @@ class ArticlesFragment : Fragment() , LifecycleObserver {
                 "1" -> articleOnlineService.getArticlesBySourceId(sourceId)
                 "2" -> articleOnlineService.getArticlesByCategory(category)
                 "3" -> articleOnlineService.getArticlesByCountry(countryId)
-                "4" -> articleRepository.getArticleByStatus(1)
+                "4" -> articleRepository.getArticleByStatus(1).map{
+                    ArticleEntityFactory.newArticleInstance(it)
+                }
                 else -> {
                    listOf<Article>()
                 }
             }
             //transform article to article entity
             val entitiesArticles : List<ArticleEntity>
-            if(type != "4"){
-                entitiesArticles = result.map {
+            entitiesArticles = if(type != "4"){
+                result.map {
                     ArticleEntityFactory.newInstance(it as Article)
                 }
             }else {
-                entitiesArticles = result as List<ArticleEntity>
+                result.map {
+                    ArticleEntityFactory.newInstance(it as Article)
+                }
             }
 
             articleRepository.insertArticles(entitiesArticles)
-            bindData(entitiesArticles, view)
+           /*if(type != "4"){
+                bindData(result , view = view)
+            }else{
+                bindData(view = view,listFavorite = entitiesArticles)
+            }*/
+            bindData(result, view)
+
         }
     }
-    private suspend fun bindData(result : List<ArticleEntity>?, view: View){
+    private suspend fun bindData(result : List<Article>? = emptyList(),view: View){
         withContext(Dispatchers.Main){
             //display data in the recycler
             val recyclerView: RecyclerView = view.findViewById(R.id.article_recycler_view)
@@ -109,9 +119,9 @@ class ArticlesFragment : Fragment() , LifecycleObserver {
                 itemClicked(it)
             }
 
-            val adapterRecycler = ArticleAdapter(listOfArticles.toMutableList()){
+            /*val adapterRecycler = ArticleAdapter(listOfArticles.toMutableList()){
                 itemClicked(it)
-            }
+            }*/
 
             val gridLayoutManager = GridLayoutManager(view.context, 1)
             recyclerView.layoutManager = gridLayoutManager

@@ -23,7 +23,7 @@ data class Article(
     val content: String,
     val url : String,
     val urlToImage : String,
-    val publishedAt: Date
+    val publishedAt: String
 
 ): Serializable { data class Source(val id : String,
                                     val name: String,
@@ -31,7 +31,7 @@ data class Article(
 
 @Entity(tableName = "articles")
 data class ArticleEntity(
-    val source: String?,
+    val source : String?,
     val author: String?,
     val title : String?,
     val description: String?,

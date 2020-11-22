@@ -32,7 +32,7 @@ class ArticleAdapter ( private val dataset: MutableList<Article>,  val articleRe
             txtTitle.text = item.title
             articleSource.text = item.source.name
             articleDesc.text = item.description
-            Log.d("favorite_view_holder", "$favoriteStatus")
+            //Log.d("favorite_view_holder", "$favoriteStatus")
             favoriteIcon.setImageResource(R.drawable.ic_favorite_empty)
 
             //if article in favoriteArticle
@@ -91,7 +91,7 @@ class ArticleAdapter ( private val dataset: MutableList<Article>,  val articleRe
     override fun getItemCount(): Int = dataset.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        Log.i("Fragment Dataset size","${dataset.size}")
+        //Log.i("Fragment Dataset size","${dataset.size}")
 
         //get current Article
         val currentArticleEntity = ArticleEntityFactory.newInstance(dataset[position])
@@ -99,7 +99,7 @@ class ArticleAdapter ( private val dataset: MutableList<Article>,  val articleRe
             var articleEntity = articleRepository.getArticlesByUrl(currentArticleEntity.url)
             val favoriteStatus = articleEntity.favoriteStatus
             currentArticleEntity.favoriteStatus = favoriteStatus
-            Log.d("favorite_db_status", "$favoriteStatus")
+            //Log.d("favorite_db_status", "$favoriteStatus")
             withContext(Dispatchers.Main){
                 when(favoriteStatus){
                     1 ->  Glide.with(holder.root).load(R.drawable.ic_favorite_add).into(holder.root.findViewById<ImageView>(R.id.favorite_icon))

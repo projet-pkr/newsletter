@@ -15,5 +15,41 @@
     <string name="action_favoris">Favoris</string>
     <string name="action_a_propos">A propos</string>
     <string name="Auteur"><u><b><i>Auteur</i></b></u></string>
+    <string name="a_propos_de_nous">A propos de nous</string>
+    <string name="membres_du_groupe">Membres du groupe</string>
+    <string name="lien_du_repository">Lien du repository</string>
+    <string name="LiensGit">https://github.com/projet-pkr/newsletter</string>
+    <string name="librairies_externes">Librairies externes</string>
+    <string name="fonctionalites">Fonctionalités</string>
+
+    <string name="liste_membres">
+        <br>
+            \nRANDRIANANDRAINA Manotiana
+        </br>
+        <br>
+            \nKOUBIKANI LOUBOTA Janssen
+        </br>
+        <br>
+            \nPAJANY Allan
+        </br>
+    </string>
+
+    <string name="liste_fonctionalite">
+        <br>
+            \nListe des articles par éditeurs
+        </br>
+        <br>
+            \nListe des articles par pays
+        </br>
+        <br>
+           \nGestion des favoris
+        </br>
+        <br>
+            \nDétail d\'un article
+        </br>
+        <br>
+            \nListe des articles par pays
+        </br>
+    </string>
 
 </resources>

@@ -31,13 +31,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_a_propos -> {
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.data = Uri.parse("https://github.com/projet-pkr/newsletter")
-            intent.setPackage("com.android.chrome") // package of SafeBrowser App
-
+            val intent = Intent(this, Aproposdenous::class.java)
+            /*intent.data = Uri.parse("https://github.com/projet-pkr/newsletter")
+            intent.setPackage("com.android.chrome") // package of SafeBrowser App*/
+            // Pas très propre
             startActivity(intent)
             true
         }
+
 
         R.id.action_favoris -> {
             // User chose the "Favorite" action, mark the current item

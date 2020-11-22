@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:textSize="11pt"
+            android:textSize="10pt"
             android:gravity="center"
             app:layout_constraintBottom_toTopOf="@id/article_source"
             app:layout_constraintEnd_toEndOf="parent"
@@ -37,9 +37,10 @@
             android:textStyle="bold"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toTopOf="@id/article_image"
-            />
+            android:layout_marginStart="10dp" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/article_image"
@@ -54,12 +55,13 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/article_author"
             android:text="@string/Auteur"
+            android:layout_marginLeft="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             app:layout_constraintTop_toBottomOf="@id/article_image"
             app:layout_constraintStart_toStartOf="@id/article_image"
-            />
+            android:layout_marginStart="10dp" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/article_description"
@@ -78,7 +80,7 @@
             android:text="@string/Details"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:maxLines="4"
+            android:maxLines="3"
             android:layout_marginTop="10dp"
             android:layout_marginHorizontal="20dp"
             app:layout_constraintTop_toBottomOf="@id/article_description"
@@ -88,13 +90,14 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/favorite_icon"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="25dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="10dp"
             app:srcCompat="@drawable/ic_favorite_empty"
             app:layout_constraintTop_toBottomOf="@id/article_source"
             app:layout_constraintStart_toStartOf="parent"
-            />
+            android:layout_marginStart="10dp" />
 
         <Button
             android:id="@+id/redirection_article"

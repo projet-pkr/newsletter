@@ -24,6 +24,7 @@
             android:textStyle="bold"
             android:textSize="11pt"
             android:gravity="center"
+            android:layout_marginBottom="10dp"
             app:layout_constraintBottom_toTopOf="@id/article_source"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -39,9 +40,10 @@
             android:textStyle="bold"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toTopOf="@id/article_image"
-            />
+            android:layout_marginStart="10dp" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/article_image"

@@ -5,9 +5,3 @@ Mini projet Android-Kotlin [Newsletter](https://github.com/eamosse/android-mbds-
 KOUBIKANI LOUBOTA Janssen <br>
 RANDRIANANDRAINA Manotiana <br>
 PAJANY Allan
-
-# Fonctionnalités dévloppées
-
-
-# Fonctionnalités manquantes
-

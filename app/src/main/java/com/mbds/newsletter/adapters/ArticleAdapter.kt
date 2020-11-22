@@ -49,40 +49,36 @@ class ArticleAdapter ( private val dataset: MutableList<Article>,  val articleRe
                     Glide.with(root).load(R.drawable.ic_favorite_empty).into(favoriteIcon)
                 }
             }
-            if(displayFavorite.isEmpty()){
-                favoriteIcon.setOnClickListener {
-                    /*Toast.makeText(
-                            root.context,
-                            item.title,
-                            Toast.LENGTH_LONG
-                    ).show()*/
-                    when(favoriteStatus){
-                        0 -> {
 
-                            CoroutineScope(Dispatchers.IO).launch {
-                                articleRepository.updateArticle(ArticleEntityFactory.newInstance(item,1))
-                                withContext(Dispatchers.Main) {
-                                    Glide.with(root).load(R.drawable.ic_favorite_add).into(favoriteIcon)
-                                }
+            favoriteIcon.setOnClickListener {
+                /*Toast.makeText(
+                        root.context,
+                        item.title,
+                        Toast.LENGTH_LONG
+                ).show()*/
+                when(favoriteStatus){
+                    0 -> {
+                        CoroutineScope(Dispatchers.IO).launch {
+                            articleRepository.updateArticle(ArticleEntityFactory.newInstance(item,1))
+                            withContext(Dispatchers.Main) {
+                                Glide.with(root).load(R.drawable.ic_favorite_add).into(favoriteIcon)
                             }
-                        }
-                        1 -> {
-
-                            CoroutineScope(Dispatchers.IO).launch {
-                                articleRepository.updateArticle(ArticleEntityFactory.newInstance(item,0))
-                                withContext(Dispatchers.Main) {
-                                    Glide.with(root).load(R.drawable.ic_favorite_empty).into(favoriteIcon)
-                                }
-                            }
-                        }
-                        else -> {
-
                         }
                     }
+                    1 -> {
+
+                        CoroutineScope(Dispatchers.IO).launch {
+                            articleRepository.updateArticle(ArticleEntityFactory.newInstance(item,0))
+                            withContext(Dispatchers.Main) {
+                                Glide.with(root).load(R.drawable.ic_favorite_empty).into(favoriteIcon)
+                            }
+                        }
+                    }
+                    else -> {
+
+                    }
                 }
-
             }
-
 
             Glide
                 .with(root)

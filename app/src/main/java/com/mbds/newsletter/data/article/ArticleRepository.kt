@@ -1,6 +1,5 @@
 package com.mbds.newsletter.data.article
 
-import com.mbds.newsletter.model.Article
 import com.mbds.newsletter.model.ArticleEntity
 
 class ArticleRepository (private val articleDao: ArticleDao){

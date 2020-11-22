@@ -85,14 +85,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             />
-        <Button
-            android:id="@+id/bouton_favoris"
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/favorite_icon"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="25dp"
+            app:srcCompat="@drawable/ic_favorite_empty"
             app:layout_constraintTop_toBottomOf="@id/article_source"
             app:layout_constraintStart_toStartOf="parent"
-            android:background="@drawable/ic_baseline_red_24"/>
+            />
 
         <Button
             android:id="@+id/redirection_article"

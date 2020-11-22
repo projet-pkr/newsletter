@@ -30,7 +30,8 @@ class Data {
         )
 
         fun getFonctionnalites() = listOf<String>(
-            "Details d'un article et redirection vers l'article complet"
+            "Details d'un article et redirection vers l'article complet",
+            "Ajout dans les favoris"
         )
     }
 }
